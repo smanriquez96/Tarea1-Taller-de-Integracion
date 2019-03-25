@@ -79,6 +79,24 @@ class API:
         otto.wait()
         return nombres
 
+    def async_search(self, s):
+        urls = ["https://swapi.co/api/people/?search=","https://swapi.co/api/films/?search=",
+        "https://swapi.co/api/planets/?search=","https://swapi.co/api/starships/?search="]
+        urls = [url+s for url in urls]
+        otto = Octopus(concurrency=10, auto_start=True, cache=True,request_timeout_in_seconds = 10,
+            expiration_in_seconds=20)
+        data = []
+        def handle_url_response(url, response):
+            response = json.loads(response.text)
+            response = response["results"]
+            for res in response:
+                if "films" in res["url"]:
+                    data.append([res["title"])
+
+                else:
+                    id = self.obtener_id(url)
+                    data.append(res["name"])
+
 
     def obtener_id(self, url):
         for j in url:
@@ -141,6 +159,9 @@ def naves(pid = None):
     pilotos = api.async_names(results["pilots"])
     return render_template('nave.html', result = results, api = api, peliculas = peliculas, pilotos = pilotos)
 
-@app.route("/search")
+@app.route("/search", methods=['GET', 'POST'])
 def search():
-    return "hola"
+    if request.method == "POST":
+        busqueda = request.form["busqueda"]
+        data = api.async_search(busqueda)
+        return render_template('busqueda.html', data = data)

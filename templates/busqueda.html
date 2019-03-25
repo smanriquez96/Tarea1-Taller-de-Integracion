@@ -1,0 +1,24 @@
+<!doctype html>
+
+<form action="https://powerful-forest-97817.herokuapp.com/search" method="post">
+ <input type="text" name="busqueda" placeholder="Search..."> <input type="submit" value="Search"><br>
+</form>
+
+<html>
+   <body>
+     <h1>Resultados de la Búsqueda</h1>
+      <table align = left>
+        <tr>
+          <th>Resultados </th>
+          <td>
+            {% for value in data%}
+             {{value}}
+            {% endfor %}
+          </td>
+        </tr>
+
+
+      </table>
+
+   </body>
+</html>
