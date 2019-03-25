@@ -97,6 +97,12 @@ class API:
                     id = self.obtener_id(url)
                     data.append(res["name"])
 
+        for url in urls:
+            otto.enqueue(url, handle_url_response)
+
+        otto.wait()
+        return data
+
 
     def obtener_id(self, url):
         for j in url:
