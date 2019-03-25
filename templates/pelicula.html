@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+   <body>
+     <h1> {{result["title"]}} </h1>
+      <table align = left>
+        <tr>
+          <th>Episodio </th>
+          <td>{{result["episode_id"]}}</td>
+        </tr>
+        <tr>
+          <th>Apertura </th>
+          <td>{{result["opening_crawl"]}}</td>
+        </tr>
+        <tr>
+          <th> Director </th>
+          <td>{{result["director"]}}</td>
+        </tr>
+        <tr>
+          <th> Productor </th>
+          <td>{{result["producer"]}}</td>
+        </tr>
+        <tr>
+          <th> Personajes </th>
+          <td>
+          {% for key,value in personajes.items()%}
+          <a href="http://127.0.0.1:5000/personajes/{{key}}"> {{value}} </a>
+          {% endfor %}
+          </td>
+        </tr>
+        <tr>
+          <th> Planetas </th>
+          <td>
+            {% for key,value in planetas.items()%}
+            <a href="http://127.0.0.1:5000/planetas/{{key}}"> {{value}} </a>
+            {% endfor %}
+          </td>
+        </tr>
+        <tr>
+          <th> Naves </th>
+          <td>
+            {% for key,value in naves.items()%}
+            <a href="http://127.0.0.1:5000/naves/{{key}}"> {{value}} </a>
+            {% endfor %}
+          </td>
+        </tr>
+
+      </table>
+   </body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+
+<form action="http://127.0.0.1:5000/" method="post">
+ <input type="text" name="busqueda" placeholder="Search..."> <input type="submit" value="Search"><br>
+</form>
+
+<html>
+   <body>
+     <h1> Star Wars </h1>
+     <h2> Peliculas </h2>
+      <table align = left>
+        <tr>
+          <th> Nombre </th>
+          <th> Año </th>
+          <th> Director </th>
+          <th> Productor </th>
+          <th> Episodio </th>
+        </tr>
+        {% for key, value in result.items() %}
+
+        <tr>
+
+          <td><a href =  "http://127.0.0.1:5000/peliculas/{{value["episode_id"]}}" >{{value["title"]}}</a></td>
+          <td>{{value["release_date"]}}</td>
+          <td>{{value["director"]}}</td>
+          <td>{{value["producer"]}}</td>
+          <td>{{value["episode_id"]}}</td>
+
+        </tr>
+          {% endfor %}
+      </table>
+
+   </body>
+</html>

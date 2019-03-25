@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+   <body>
+     <h1> {{result["name"]}} </h1>
+      <table align = left>
+        <tr>
+          <th>Período de Rotación </th>
+          <td>{{result["rotation_period"]}}</td>
+        </tr>
+        <tr>
+          <th>Peróodo de Orbita </th>
+          <td>{{result["orbital_period"]}}</td>
+        </tr>
+        <tr>
+          <th>Diámetro </th>
+          <td>{{result["diameter"]}}</td>
+        </tr>
+        <tr>
+          <th>Clima </th>
+          <td>{{result["climate"]}}</td>
+        </tr>
+        <tr>
+          <th>Gravedad </th>
+          <td>{{result["gravity"]}}</td>
+        </tr>
+        <tr>
+          <th>Terreno </th>
+          <td>{{result["terrain"]}}</td>
+        </tr>
+        <tr>
+          <th>Agua en la Superficie </th>
+          <td>{{result["surface_water"]}}</td>
+        </tr>
+        <tr>
+          <th>Población </th>
+          <td>{{result["population"]}}</td>
+        </tr>
+        <tr>
+          <th>Películas </th>
+          <td>
+            {% for key,value in peliculas.items()%}
+            <a href="http://127.0.0.1:5000/peliculas/{{key}}"> {{value}} </a>
+            {% endfor %}
+          </td>
+        </tr>
+        <tr>
+          <th>Residentes </th>
+          <td>
+            {% for key,value in residentes.items()%}
+            <a href="http://127.0.0.1:5000/personajes/{{key}}"> {{value}} </a>
+            {% endfor %}
+          </td>
+        </tr>
+
+      </table>
+   </body>
+</html>

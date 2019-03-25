@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+   <body>
+     <h1> {{result["name"]}} </h1>
+      <table align = left>
+        <tr>
+          <th>Estatura </th>
+          <td>{{result["height"]}}</td>
+        </tr>
+        <tr>
+          <th>Peso </th>
+          <td>{{result["mass"]}}</td>
+        </tr>
+        <tr>
+          <th>Color de Pelo </th>
+          <td>{{result["hair_color"]}}</td>
+        </tr>
+        <tr>
+          <th>Color de Piel </th>
+          <td>{{result["skin_color"]}}</td>
+        </tr>
+        <tr>
+          <th>Color de Ojos </th>
+          <td>{{result["eye_color"]}}</td>
+        </tr>
+        <tr>
+          <th>Nacimiento </th>
+          <td>{{result["birth_year"]}}</td>
+        </tr>
+        <tr>
+          <th>Genero </th>
+          <td>{{result["gender"]}}</td>
+        </tr>
+        <tr>
+          <th>Planeta de Nacimiento </th>
+          <td><a  href="http://127.0.0.1:5000/planetas/{{api.obtener_id(result["homeworld"])}}">{{api.obtener_nombres(result["homeworld"])}}<a></td>
+        </tr>
+        <tr>
+          <th>Peliculas </th>
+          <td>
+            {% for key,value in peliculas.items()%}
+            <a href="http://127.0.0.1:5000/peliculas/{{key}}"> {{value}} </a>
+            {% endfor %}
+          </td>
+        </tr>
+        <tr>
+          <th>Naves </th>
+          <td>
+            {% for key,value in naves.items()%}
+            <a href="http://127.0.0.1:5000/naves/{{key}}"> {{value}} </a>
+            {% endfor %}
+          </td>
+        </tr>
+
+      </table>
+   </body>
+</html>

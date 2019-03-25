@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+   <body>
+     <h1> {{result["name"]}} </h1>
+      <table align = left>
+        <tr>
+          <th>Modelo </th>
+          <td>{{result["model"]}}</td>
+        </tr>
+        <tr><pid>/search?busqueda=<sid>
+          <th>Manufactura </th>
+          <td>{{result["manufacturer"]}}</td>
+        </tr>
+        <tr>
+          <th>Costo </th>
+          <td>{{result["cost_in_credits"]}}</td>
+        </tr>
+        <tr>
+          <th>Largo </th>
+          <td>{{result["length"]}}</td>
+        </tr>
+        <tr>
+          <th>Velocidad Máxima </th>
+          <td>{{result["max_atmosphering_speed"]}}</td>
+        </tr>
+        <tr>
+          <th>Navegantes </th>
+          <td>{{result["crew"]}}</td>
+        </tr>
+        <tr>
+          <th>Pasajeros </th>
+          <td>{{result["passengers"]}}</td>
+        </tr>
+        <tr>
+          <th>Capacidad de Cargo </th>
+          <td>{{result["cargo_capacity"]}}</td>
+        </tr>
+        <tr>
+          <th>Años de Provisiones </th>
+          <td>{{result["consumables"]}}</td>
+        </tr>
+        <tr>
+          <th>Rating </th>
+          <td>{{result["hyperdrive_rating"]}}</td>
+        </tr>
+        <tr>
+          <th>MGLT </th>
+          <td>{{result["MGLT"]}}</td>
+        </tr>
+        <tr>
+          <th>Clase </th>
+          <td>{{result["starship_class"]}}</td>
+        </tr>
+        <tr>
+          <th>Pilotos </th>
+          <td>
+            {% for key,value in pilotos.items()%}
+            <a href="http://127.0.0.1:5000/peliculas/{{key}}"> {{value}} </a>
+            {% endfor %}
+          </td>
+        </tr>
+        <tr>
+          <th>Películas </th>
+          <td>
+            {% for key,value in peliculas.items()%}
+            <a href="http://127.0.0.1:5000/peliculas/{{key}}"> {{value}} </a>
+            {% endfor %}
+          </td>
+        </tr>
+
+
+      </table>
+   </body>
+</html>
