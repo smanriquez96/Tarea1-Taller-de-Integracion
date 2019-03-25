@@ -91,7 +91,7 @@ class API:
             response = response["results"]
             for res in response:
                 if "films" in res["url"]:
-                    data.append([res["title"])
+                    data.append(res["title"])
 
                 else:
                     id = self.obtener_id(url)
