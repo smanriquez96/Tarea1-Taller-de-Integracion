@@ -46,7 +46,7 @@ especies'''
 def peliculas(pid = None):
     url =  "https://swapi-graphql-integracion-t3.herokuapp.com/"
     img = "../static/images/img{}.jpg".format(pid)
-    dic_id = {"1": "4", "2": "5", "3": "6", "4": "1", "5": "2", "6": "3"}
+    dic_id = {"1": "4", "2": "5", "3": "6", "4": "1", "5": "2", "6": "3", "7": "7"}
     pid = dic_id[pid]
     pelicula = "film(filmID:{})".format(pid)
     req = {"query":"{" + pelicula + " {title releaseDate openingCrawl producers director episodeID characterConnection {characters {name id}} planetConnection {planets {name id}} starshipConnection {starships {name id}} created edited }}"}
