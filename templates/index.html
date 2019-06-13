@@ -1,34 +1,49 @@
 <!doctype html>
-
-<form action="https://powerful-forest-97817.herokuapp.com/search" method="post">
- <input type="text" name="busqueda" placeholder="Search..."> <input type="submit" value="Search"><br>
-</form>
-
 <html>
+
+<head>
+  <title>SWAPI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+</head>
+
    <body>
-     <h1> Star Wars </h1>
-     <h2> Peliculas </h2>
-      <table align = left>
-        <tr>
-          <th> Nombre </th>
-          <th> Año </th>
-          <th> Director </th>
-          <th> Productor </th>
-          <th> Episodio </th>
-        </tr>
-        {% for key, value in result.items() %}
 
-        <tr>
+     <!-- Header -->
+     			<header id="header">
+     				<!-- <div class="logo"><a href="#">Films <span>Star Wars</span></a></div> -->
+     			</header>
 
-          <td><a href =  "https://powerful-forest-97817.herokuapp.com/peliculas/{{value["episode_id"]}}" >{{value["title"]}}</a></td>
-          <td>{{value["release_date"]}}</td>
-          <td>{{value["director"]}}</td>
-          <td>{{value["producer"]}}</td>
-          <td>{{value["episode_id"]}}</td>
+    <!-- Main -->
+    <section id="main">
+      <div class="inner">
+			    <div class="image fit flush">
+						<img src="../static/images/sw.jpg" alt="" />
+					</div>
+          <p>Click film name for more</p>
+      {% for value in result %}
+        <div class="container">
+          <section  class="wrapper style1">
+          <header class ="special">
+            <h2><a href =  "http://127.0.0.1:5000/peliculas/{{value["episodeID"]}}"> {{value["title"]}} </h2></a>
+              <p>Episode {{value["episodeID"]}}</p>
+          </header>
+          <div class="content">
+            <p>Director: {{value["director"]}}</p>
+            <p>Realease date: {{value["releaseDate"]}}</p>
+            <p>Producers: {{value["producers"]}}</p>
+          </div>
+        </section>
+      </div>
+      {% endfor %}
+      </div>
+    </section>
 
-        </tr>
-          {% endfor %}
-      </table>
+    <!-- Scripts -->
+			<script src="../static/js/jquery.min.js"></script>
+			<script src="../static/js/jquery.poptrox.min.js"></script>
+			<script src="../static/js/skel.min.js"></script>
+			<script src="../static/js/util.js"></script>
+			<script src="../static/js/main.js"></script>
 
    </body>
 </html>

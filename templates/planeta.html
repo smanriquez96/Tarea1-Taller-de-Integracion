@@ -1,62 +1,82 @@
 <!doctype html>
-<form action="https://powerful-forest-97817.herokuapp.com/search" method="post">
- <input type="text" name="busqueda" placeholder="Search..."> <input type="submit" value="Search"><br>
-</form>
-
-
 <html>
-   <body>
-     <h1> {{result["name"]}} </h1>
-      <table align = left>
-        <tr>
-          <th>Período de Rotación </th>
-          <td>{{result["rotation_period"]}}</td>
-        </tr>
-        <tr>
-          <th>Peróodo de Orbita </th>
-          <td>{{result["orbital_period"]}}</td>
-        </tr>
-        <tr>
-          <th>Diámetro </th>
-          <td>{{result["diameter"]}}</td>
-        </tr>
-        <tr>
-          <th>Clima </th>
-          <td>{{result["climate"]}}</td>
-        </tr>
-        <tr>
-          <th>Gravedad </th>
-          <td>{{result["gravity"]}}</td>
-        </tr>
-        <tr>
-          <th>Terreno </th>
-          <td>{{result["terrain"]}}</td>
-        </tr>
-        <tr>
-          <th>Agua en la Superficie </th>
-          <td>{{result["surface_water"]}}</td>
-        </tr>
-        <tr>
-          <th>Población </th>
-          <td>{{result["population"]}}</td>
-        </tr>
-        <tr>
-          <th>Películas </th>
-          <td>
-            {% for key,value in peliculas.items()%}
-            <a href="https://powerful-forest-97817.herokuapp.com/peliculas/{{key}}"> {{value}} </a>
-            {% endfor %}
-          </td>
-        </tr>
-        <tr>
-          <th>Residentes </th>
-          <td>
-            {% for key,value in residentes.items()%}
-            <a href="https://powerful-forest-97817.herokuapp.com/personajes/{{key}}"> {{value}} </a>
-            {% endfor %}
-          </td>
-        </tr>
 
-      </table>
+<head>
+  <title>SWAPI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+  <style>
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      display: inline;
+    }
+  </style>
+</head>
+
+   <body>
+     <ul>
+      <li><a href="http://127.0.0.1:5000/">Home</a></li>
+    </ul>
+
+     <!-- Header -->
+     			<header id="header">
+     				<div class="logo"><a href="#">{{result["name"]}}</a></div>
+     			</header>
+
+    <!-- Main -->
+    <section id="main">
+      <div class="inner">
+        <div class="container">
+
+          <section  class="wrapper style1">
+          <header class ="special">
+            <h2>General Information</h2>
+          </header>
+          <div class="content">
+            <p>Rotation Period: {{result["rotationPeriod"]}}</p>
+            <p>Orbital Period: {{result["orbitalPeriod"]}}</p>
+            <p>Diameter: {{result["diameter"]}}</p>
+            <p>Climates: {{result["climates"]}}</p>
+            <p>Gravity: {{result["gravity"]}}</p>
+            <p>Terrains: {{result["terrains"]}}</p>
+            <p>Surface Water: {{result["surfaceWater"]}}</p>
+            <p>Population: {{result["population"]}}</p>
+          </div>
+          </section>
+
+        <section  class="wrapper style1">
+        <header class ="special">
+          <h2>Films</h2>
+        </header>
+        <div class="content">
+          {% for pelicula in peliculas%}
+          <p><a href =  "http://127.0.0.1:5000/peliculas/{{pelicula["episodeID"]}}">{{pelicula["title"]}}</p></a>
+          {% endfor %}
+        </div>
+        </section>
+
+
+
+        <section  class="wrapper style1">
+        <header class ="special">
+          <h2>Residents</h2>
+        </header>
+        <div class="content">
+          {%for residente in residentes%}
+          <p><a href = "http://127.0.0.1:5000/personajes/{{residente["id"]}}">{{residente["name"]}}</p></a>
+          {% endfor %}
+        </div>
+        </section>
+
+
+      </div>
+
+      </div>
+    </section>
+
    </body>
 </html>

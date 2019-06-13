@@ -1,54 +1,101 @@
 <!doctype html>
-<form action="https://powerful-forest-97817.herokuapp.com/search" method="post">
- <input type="text" name="busqueda" placeholder="Search..."> <input type="submit" value="Search"><br>
-</form>
-
-
 <html>
-   <body>
-     <h1> {{result["title"]}} </h1>
-      <table align = left>
-        <tr>
-          <th>Episodio </th>
-          <td>{{result["episode_id"]}}</td>
-        </tr>
-        <tr>
-          <th>Apertura </th>
-          <td>{{result["opening_crawl"]}}</td>
-        </tr>
-        <tr>
-          <th> Director </th>
-          <td>{{result["director"]}}</td>
-        </tr>
-        <tr>
-          <th> Productor </th>
-          <td>{{result["producer"]}}</td>
-        </tr>
-        <tr>
-          <th> Personajes </th>
-          <td>
-          {% for key,value in personajes.items()%}
-          <a href="https://powerful-forest-97817.herokuapp.com/personajes/{{key}}"> {{value}} </a>
-          {% endfor %}
-          </td>
-        </tr>
-        <tr>
-          <th> Planetas </th>
-          <td>
-            {% for key,value in planetas.items()%}
-            <a href="https://powerful-forest-97817.herokuapp.com/planetas/{{key}}"> {{value}} </a>
-            {% endfor %}
-          </td>
-        </tr>
-        <tr>
-          <th> Naves </th>
-          <td>
-            {% for key,value in naves.items()%}
-            <a href="https://powerful-forest-97817.herokuapp.com/naves/{{key}}"> {{value}} </a>
-            {% endfor %}
-          </td>
-        </tr>
 
-      </table>
+<head>
+  <title>SWAPI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+  <style>
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      display: inline;
+    }
+  </style>
+</head>
+
+
+
+
+   <body>
+     <ul>
+      <li><a href="http://127.0.0.1:5000/">Home</a></li>
+    </ul>
+
+     <!-- Header -->
+     			<header id="header">
+     				<div class="logo"><a href="#">{{result["title"]}} <span>Episodio {{result["episodeID"]}}</span></a></div>
+     			</header>
+
+    <!-- Main -->
+    <section id="main">
+      <div class="inner">
+        <div class="image fit flush">
+          <img src={{img}} alt="" />
+        </div>
+        <div class="container">
+          <section  class="wrapper style1">
+          <header class ="special">
+            <h2>General Information</h2>
+          </header>
+          <div class="content">
+            <p>Director: {{result["director"]}}</p>
+            <p>Realease date: {{result["releaseDate"]}}</p>
+            <p>Producers: {{result["producers"]}}</p>
+          </div>
+          </section>
+
+          <section  class="wrapper style1">
+          <header class ="special">
+            <h2>Opening</h2>
+          </header>
+          <div class="content">
+            <p>{{result["openingCrawl"]}}</p>
+
+          </div>
+          </section>
+
+        <section  class="wrapper style1">
+        <header class ="special">
+          <h2>Characters</h2>
+        </header>
+        <div class="content">
+          {% for personaje in personajes%}
+          <p><a href =  "http://127.0.0.1:5000/personajes/{{personaje["id"]}}">{{personaje["name"]}}</p></a>
+          {% endfor %}
+        </div>
+        </section>
+
+        <section  class="wrapper style1">
+        <header class ="special">
+          <h2>Planets</h2>
+        </header>
+        <div class="content">
+          {%for planeta in planetas%}
+          <p><a href =  "http://127.0.0.1:5000/planetas/{{planeta["id"]}}">{{planeta["name"]}}</p></a>
+          {% endfor %}
+        </div>
+        </section>
+
+        <section  class="wrapper style1">
+        <header class ="special">
+          <h2>Starships</h2>
+        </header>
+        <div class="content">
+          {%for nave in naves%}
+          <p><a href =  "http://127.0.0.1:5000/naves/{{nave["id"]}}">{{nave["name"]}}</p></a>
+          {% endfor %}
+        </div>
+        </section>
+
+
+      </div>
+
+      </div>
+    </section>
+
    </body>
 </html>

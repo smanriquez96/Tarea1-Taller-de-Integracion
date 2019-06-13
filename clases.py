@@ -1,21 +1,9 @@
-from octopus import Octopus
+import requests, json
 
-# this Octopus instance we'll run 4 threads,
-# automatically start listening to the queue and
-# we'll in-memory cache responses for 10 seconds.
-otto = Octopus(
-    concurrency=10, auto_start=True, cache=True,request_timeout_in_seconds = 10,
-    expiration_in_seconds=20)
+pid = 4
+url =  "https://swapi-graphql-integracion-t3.herokuapp.com/"
+pelicula = "film(filmID:{})".format(pid)
+req = {"query":"{" + pelicula + " {title releaseDate openingCrawl producers director episodeID characterConnection {characters {name ID}} planetConnection {planets {name}} starshipConnection {starships {name}} created edited }}"}
+film = requests.post(url=url, json=req).json()["data"]["film"]
 
-def handle_url_response(url, response):
-    print("hola")
-    # do something with response
-
-otto.enqueue('http://www.google.com', handle_url_response)
-otto.enqueue('http://www.facebook.com', handle_url_response)
-otto.enqueue('http://www.yahoo.com', handle_url_response)
-
-# this request will come from the cache
-otto.enqueue('http://www.google.com', handle_url_response)
-
-otto.wait()  # waits until queue is empty or timeout is ellapsed
+print(film)
