@@ -76,7 +76,3 @@ def naves(pid = None):
     req = {"query": "{" + nave + "{name model manufacturers maxAtmospheringSpeed cargoCapacity crew hyperdriveRating MGLT costInCredits length starshipClass filmConnection{films {title episodeID}} pilotConnection{pilots {name id}} }}"}
     starship = requests.post(url=url, json=req).json()["data"]["starship"]
     return render_template('nave.html', result = starship, peliculas = starship["filmConnection"]["films"], pilotos = starship["pilotConnection"]["pilots"])
-
-
-if __name__ == '__main__':
-    app.run()

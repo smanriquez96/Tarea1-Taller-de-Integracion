@@ -19,7 +19,7 @@
 
    <body>
      <ul>
-      <li><a href="http://127.0.0.1:5000/">Home</a></li>
+      <li><a href="https://powerful-forest-97817.herokuapp.com/">Home</a></li>
     </ul>
 
      <!-- Header -->
@@ -54,7 +54,7 @@
         </header>
         <div class="content">
           {% for pelicula in peliculas%}
-          <p><a href =  "http://127.0.0.1:5000/peliculas/{{pelicula["episodeID"]}}">{{pelicula["title"]}}</p></a>
+          <p><a href =  "https://powerful-forest-97817.herokuapp.com/peliculas/{{pelicula["episodeID"]}}">{{pelicula["title"]}}</p></a>
           {% endfor %}
         </div>
         </section>
@@ -67,7 +67,7 @@
         </header>
         <div class="content">
           {%for residente in residentes%}
-          <p><a href = "http://127.0.0.1:5000/personajes/{{residente["id"]}}">{{residente["name"]}}</p></a>
+          <p><a href = "https://powerful-forest-97817.herokuapp.com/personajes/{{residente["id"]}}">{{residente["name"]}}</p></a>
           {% endfor %}
         </div>
         </section>
